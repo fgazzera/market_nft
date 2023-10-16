@@ -1,13 +1,40 @@
-//SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";  // OpenZeppelin package contains implementation of the ERC 20 standard, which our NFT smart contract will inherit
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract CoinCraft is ERC20 {
-    uint constant _initial_supply = 10000 * (10**18);  // setting variable for how many of your own tokens are initially put into your wallet, feel free to edit the first number but make sure to leave the second number because we want to make sure our supply has 18 decimals
+    address public owner;
 
-    /* ERC 20 constructor takes in 2 strings, feel free to change the first string to the name of your token name, and the second string to the corresponding symbol for your custom token name */
-    constructor() ERC20("CoinCraft", "CC") public {
-        _mint(msg.sender, _initial_supply);
+    constructor() ERC20("CoinCraft", "CC") {
+        owner = msg.sender;
+        uint256 initialSupply = 10000 * 10**18; // 10,000 tokens with 18 decimal places
+        _mint(msg.sender, initialSupply);
     }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can call this function");
+        _;
+    }
+
+    function mint(address account, uint256 amount) public onlyOwner {
+        _mint(account, amount);
+    }
+
+    function transfer(address recipient, uint256 amount) public override returns (bool) {
+        return super.transfer(recipient, amount);
+    }
+
+    function approve(address spender, uint256 amount) public override returns (bool) {
+        return super.approve(spender, amount);
+    }
+
+    function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool) {
+        return super.transferFrom(sender, recipient, amount);
+    }
+
+    function balanceOf(address account) public view override returns (uint256) {
+        return super.balanceOf(account);
+    }
+
 }
