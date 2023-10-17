@@ -1,4 +1,4 @@
-//SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
 //Console functions to help debug the smart contract just like in Javascript
@@ -10,6 +10,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "../CoinCraft/sepolia-testnet-deployment/contracts/coincraft.sol"; 
 
 contract NFTMarketplace is ERC721URIStorage {
+    CoinCraft public coinCraftToken; // Define la variable para el contrato de CoinCraft ERC20
     using Counters for Counters.Counter;
     //_tokenIds variable has the most recent minted tokenId
     Counters.Counter private _tokenIds;
@@ -19,7 +20,6 @@ contract NFTMarketplace is ERC721URIStorage {
     address payable owner;
     //The fee charged by the marketplace to be allowed to list an NFT
     uint256 listPrice = 0.01 ether;
-    CoinCraft public coinCraftToken; // Define la variable para el contrato de CoinCraft ERC20
 
     //The structure to store info about a listed token
     struct ListedToken {
