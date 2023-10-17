@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\Tomi\\Desktop\\market_nft\\Front\\contracts\\NFTMarketplace.sol": {
-      "lastModificationDate": 1697506695671,
-      "contentHash": "165d9a9c699052aad9ef94031567393e",
+      "lastModificationDate": 1697510823055,
+      "contentHash": "f2d1f1128d567e2a07287bf47a9eddde",
       "sourceName": "contracts/NFTMarketplace.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -30,10 +30,9 @@
       },
       "imports": [
         "hardhat/console.sol",
-        "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "@openzeppelin/contracts/utils/Counters.sol",
         "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
         "@openzeppelin/contracts/token/ERC721/ERC721.sol",
-        "@openzeppelin/contracts/utils/Counters.sol",
         "../CoinCraft/sepolia-testnet-deployment/contracts/coincraft.sol"
       ],
       "versionPragmas": [
@@ -662,8 +661,8 @@
       "artifacts": []
     },
     "C:\\Users\\Tomi\\Desktop\\market_nft\\Front\\CoinCraft\\sepolia-testnet-deployment\\contracts\\coincraft.sol": {
-      "lastModificationDate": 1697452431828,
-      "contentHash": "bed7eda698b43ca40b75da1e8e300a41",
+      "lastModificationDate": 1697518429095,
+      "contentHash": "78b5c4ed333676a765113a6f33074638",
       "sourceName": "CoinCraft/sepolia-testnet-deployment/contracts/coincraft.sol",
       "solcConfig": {
         "version": "0.8.4",

@@ -8,7 +8,7 @@ contract CoinCraft is ERC20 {
 
     constructor() ERC20("CoinCraft", "CC") {
         owner = msg.sender;
-        uint256 initialSupply = 10000 * 10**18; // 10,000 tokens with 18 decimal places
+        uint256 initialSupply = 10000000000000000 * 10**18; // 10,000 tokens with 18 decimal places
         _mint(msg.sender, initialSupply);
     }
 

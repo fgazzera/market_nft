@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 async function main() {
     const [deployer] = await ethers.getSigners();
   
@@ -12,6 +14,10 @@ async function main() {
     const token = await Token.deploy();
   
     console.log("Token address:", token.address);
+    const data = {
+      address: token.address,
+    }
+    fs.writeFileSync('../../src/CoinCraft.json', JSON.stringify(data))
   }
   
   main()

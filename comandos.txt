@@ -1,0 +1,12 @@
+direccion: market_nft\Front\CoinCraft\sepolia-testnet-deployment> 
+comando: npx hardhat run deployments/deploy.js --network sepolia
+
+verificar en etherscan e importar tokens para seguir
+
+direccion: market_nft\Front> 
+comando: npx hardhat run --network sepolia scripts/deploy.js
+
+verificar que este andando en etherscan para seguir
+
+direccion: market_nft\Front> 
+comando: npm start
