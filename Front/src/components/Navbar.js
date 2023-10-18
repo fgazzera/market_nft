@@ -34,23 +34,23 @@ function Navbar() {
   }
 
   async function connectWebsite() {
-
-      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-      if(chainId !== '0xaa36a7')
-      {
-        //alert('Incorrect network! Switch your metamask network to Rinkeby');
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: '0xaa36a7' }],
-       })
-      }  
-      await window.ethereum.request({ method: 'eth_requestAccounts' })
-        .then(() => {
-          updateButton();
-          console.log("here");
-          getAddress();
-          window.location.replace(location.pathname)
-        });
+    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+    if(chainId !== '11155111')
+    {
+      //alert('Incorrect network! Switch your metamask network to Rinkeby');
+      // 0xaa36a7
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '11155111' }],
+     })
+    }  
+    await window.ethereum.request({ method: 'eth_requestAccounts' })
+      .then(() => {
+        updateButton();
+        console.log("here");
+        getAddress();
+        window.location.replace(location.pathname)
+    });
   }
 
   useEffect(() => {

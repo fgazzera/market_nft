@@ -90,7 +90,7 @@ export default function SellNFT() {
       const approvalAmount = ethers.utils.parseUnits(listingPrice, 'ether');
       await coinCraftContract.approve(Marketplace.address, approvalAmount);
 
-      let transaction = await marketplaceContract.createToken(metadataURL, price, { gasLimit: 5000 }); // Establece un límite de gas fijo (ajusta según tus necesidades)
+      let transaction = await marketplaceContract.createToken(metadataURL, price, { gasLimit: 50000 }); // Establece un límite de gas fijo (ajusta según tus necesidades)
       await transaction.wait();
 
       alert("Successfully listed your NFT!");

@@ -1,0 +1,27 @@
+error al cargar pagina principal
+Uncaught runtime errors:
+×
+ERROR
+unknown account #0 (operation="getAddress", code=UNSUPPORTED_OPERATION, version=providers/5.7.2)
+    at Logger.makeError (http://localhost:3000/static/js/bundle.js:10032:19)
+    at Logger.throwError (http://localhost:3000/static/js/bundle.js:10041:16)
+    at http://localhost:3000/static/js/bundle.js:15399:16
+    at async Promise.all (index 0)
+ERROR
+unknown account #0 (operation="getAddress", code=UNSUPPORTED_OPERATION, version=providers/5.7.2)
+    at Logger.makeError (http://localhost:3000/static/js/bundle.js:10032:19)
+    at Logger.throwError (http://localhost:3000/static/js/bundle.js:10041:16)
+    at http://localhost:3000/static/js/bundle.js:15399:16
+    at async Promise.all (index 0)
+ERROR
+unknown account #0 (operation="getAddress", code=UNSUPPORTED_OPERATION, version=providers/5.7.2)
+    at Logger.makeError (http://localhost:3000/static/js/bundle.js:10032:19)
+    at Logger.throwError (http://localhost:3000/static/js/bundle.js:10041:16)
+    at http://localhost:3000/static/js/bundle.js:15399:16
+    at async getAddress (http://localhost:3000/static/js/bundle.js:708:18)
+ERROR
+unknown account #0 (operation="getAddress", code=UNSUPPORTED_OPERATION, version=providers/5.7.2)
+    at Logger.makeError (http://localhost:3000/static/js/bundle.js:10032:19)
+    at Logger.throwError (http://localhost:3000/static/js/bundle.js:10041:16)
+    at http://localhost:3000/static/js/bundle.js:15399:16
+    at async getAddress (http://localhost:3000/static/js/bundle.js:708:18)
