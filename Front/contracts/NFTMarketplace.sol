@@ -6,8 +6,11 @@ import "hardhat/console.sol";
 //OpenZeppelin's NFT Standard Contracts. We will extend functions from this in our implementation
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "../CoinCraft/sepolia-testnet-deployment/contracts/coincraft.sol"; 
+
+   IERC20 private constant USDC = IERC20(0xE8dD4fFC2c42027a32A947E4c04389181eEb9204);
 
 contract NFTMarketplace is ERC721URIStorage {
     CoinCraft public coinCraftToken; // Define la variable para el contrato de CoinCraft ERC20
@@ -48,12 +51,7 @@ contract NFTMarketplace is ERC721URIStorage {
 
     function setCoinCraftTokenContract(address _tokenContractAddress) public {
         require(owner == msg.sender, "Only owner can set CoinCraft token contract");
-        coinCraftToken = CoinCraft(_tokenContractAddress);
-    }
-
-    function setCoinCraftTokenAddress(address _tokenAddress) public {
-        require(owner == msg.sender, "Only owner can set CoinCraft token address");
-        coinCraftToken = CoinCraft(_tokenAddress);
+        coinCraftToken = IERC20(_tokenContractAddress);
     }
 
     //The first time a token is created, it is listed here
@@ -81,12 +79,6 @@ contract NFTMarketplace is ERC721URIStorage {
         // Increment the tokenId counter, which keeps track of the number of minted NFTs
         _tokenIds.increment();
         uint256 newTokenId = _tokenIds.current();
-
-        // Mint the NFT with tokenId newTokenId to the address who called createToken
-        _safeMint(msg.sender, newTokenId);
-
-        // Map the tokenId to the tokenURI (which is an IPFS URL with the NFT metadata)
-        _setTokenURI(newTokenId, tokenURI);
 
         // Update the mapping of tokenId's to Token details, useful for retrieval functions
         idToListedToken[newTokenId] = ListedToken(

@@ -82,24 +82,25 @@ export default function SellNFT() {
 
       const marketplaceContract = new ethers.Contract(Marketplace.address, Marketplace.abi, signer);
 
-      const price = ethers.utils.parseUnits(formParams.price, 'ether');
+      //const price = ethers.utils.parseUnits(formParams.price, 'ether');
       let listingPrice = await marketplaceContract.getListPrice();
       listingPrice = listingPrice.toString();
 
       const coinCraftContract = new ethers.Contract(config.address, ['function approve(address spender, uint256 amount)'], signer);
-      const approvalAmount = ethers.utils.parseUnits(listingPrice, 'ether');
-      await coinCraftContract.approve(Marketplace.address, approvalAmount);
+      const waitingApprove = await coinCraftContract.approve(Marketplace.address, listingPrice);
+      await waitingApprove.wait();
 
-      let transaction = await marketplaceContract.createToken(metadataURL, price, { gasLimit: 50000 }); // Establece un límite de gas fijo (ajusta según tus necesidades)
+      let transaction = await marketplaceContract.createToken(metadataURL, listingPrice, { gasLimit: 50000 }); // Establece un límite de gas fijo (ajusta según tus necesidades)
       await transaction.wait();
 
       alert("Successfully listed your NFT!");
       enableButton();
       updateMessage("");
-      updateFormParams({ name: '', description: '', price: '' });
+      updateFormParams({ name: '', description: '', listingPrice: '' });
       window.location.replace("/");
     } catch (e) {
       alert("Upload error" + e);
+      console.log("Upload error" + e);
     }
   }
 
