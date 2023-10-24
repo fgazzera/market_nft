@@ -10,7 +10,6 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "../CoinCraft/sepolia-testnet-deployment/contracts/coincraft.sol"; 
 
-   IERC20 private constant USDC = IERC20(0xE8dD4fFC2c42027a32A947E4c04389181eEb9204);
 
 contract NFTMarketplace is ERC721URIStorage {
     CoinCraft public coinCraftToken; // Define la variable para el contrato de CoinCraft ERC20
@@ -51,7 +50,7 @@ contract NFTMarketplace is ERC721URIStorage {
 
     function setCoinCraftTokenContract(address _tokenContractAddress) public {
         require(owner == msg.sender, "Only owner can set CoinCraft token contract");
-        coinCraftToken = IERC20(_tokenContractAddress);
+        coinCraftToken = IERC20(0xE8dD4fFC2c42027a32A947E4c04389181eEb9204);
     }
 
     //The first time a token is created, it is listed here
